@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perfect_pitch_app/game_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -13,13 +14,21 @@ class _HomePageState extends State<HomePage> {
   final roundsController = TextEditingController();
   int rounds = 0;
 
-  double _currentCounter = 1;
+  void _setText() {
+    setState(() {
+      rounds = int.parse(roundsController.text);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+            _setText();
+          },
           child: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -65,6 +74,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: ((context) => GamePage(
+                                      note: "XD",
+                                      score: 10,
+                                      round: 10,
+                                      properNote: 10))));
+                            },
+                            child: Text("XDD")),
                       ],
                     ),
                   ),
