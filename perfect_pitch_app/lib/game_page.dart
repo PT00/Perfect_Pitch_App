@@ -1,20 +1,18 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
+
+import 'package:perfect_pitch_app/notes.dart';
 
 class GamePage extends StatefulWidget {
-  final String note;
   final int score;
   final int round;
-  final int properNote;
-  const GamePage(
-      {Key? key,
-      required this.note,
-      required this.score,
-      required this.round,
-      required this.properNote})
-      : super(key: key);
+
+  const GamePage({
+    Key? key,
+    required this.score,
+    required this.round,
+  }) : super(key: key);
 
   @override
   State<GamePage> createState() => _GamePageState();
@@ -22,12 +20,23 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final player = AudioPlayer();
+  int index = -1;
+  String source = '';
+
+  void playSound() {
+    var help = randomNote();
+    index = randomNote()[0];
+    source = randomNote()[1];
+    Timer(const Duration(milliseconds: 500), () async {
+      player.setAsset(source);
+      await player.play();
+    });
+  }
+
   @override
   void initState() {
-    Timer(Duration(milliseconds: 500), () async {
-      await player.play(AssetSource('sounds/c.mp3'));
-    });
     super.initState();
+    playSound();
   }
 
   @override
@@ -35,7 +44,18 @@ class _GamePageState extends State<GamePage> {
     return Scaffold(
       body: Center(
         child: SafeArea(
-          child: SingleChildScrollView(),
+          child: SingleChildScrollView(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: ((context) => GamePage(
+                          score: widget.score + 1,
+                          round: widget.round - 1,
+                        ))));
+              },
+              child: Text("XDDD"),
+            ),
+          ),
         ),
       ),
     );

@@ -13,13 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final roundsController = TextEditingController();
   int rounds = 0;
-
-  void _setText() {
-    setState(() {
-      rounds = int.parse(roundsController.text);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +20,6 @@ class _HomePageState extends State<HomePage> {
         child: GestureDetector(
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
-            _setText();
           },
           child: SafeArea(
             child: SingleChildScrollView(
@@ -79,14 +71,17 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => GamePage(
-                                      note: "XD",
-                                      score: 10,
-                                      round: 10,
-                                      properNote: 10))));
+                              if (roundsController.text == '') {
+                              } else {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: ((context) => GamePage(
+                                          score: 0,
+                                          round:
+                                              int.parse(roundsController.text),
+                                        ))));
+                              }
                             },
-                            child: Text("XDD")),
+                            child: Text("Play")),
                       ],
                     ),
                   ),
