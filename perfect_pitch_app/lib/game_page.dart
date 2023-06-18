@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:perfect_pitch_app/notes.dart';
 
 class GamePage extends StatefulWidget {
@@ -28,8 +27,7 @@ class _GamePageState extends State<GamePage> {
     index = randomNote()[0];
     source = randomNote()[1];
     Timer(const Duration(milliseconds: 500), () async {
-      player.setAsset(source);
-      await player.play();
+      await player.play(AssetSource(source));
     });
   }
 
