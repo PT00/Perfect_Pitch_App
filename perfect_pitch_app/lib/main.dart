@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:perfect_pitch_app/user_preferences.dart';
 import 'home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserSimplePreferences.init();
+
   runApp(const MyApp());
 }
 
