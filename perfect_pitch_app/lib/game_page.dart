@@ -46,11 +46,16 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Timer(const Duration(milliseconds: 0), () async {
+                await player.stop();
+                await player.play(AssetSource(source));
+              });
+            },
             child: Text("Play again"),
           ),
           SizedBox(
-            height: 100,
+            height: 200,
           ),
           SizedBox(
             height: 300,
