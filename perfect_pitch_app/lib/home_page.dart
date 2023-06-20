@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
                             decoration: const BoxDecoration(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 borderRadius: BorderRadius.only(
@@ -70,12 +71,15 @@ class _HomePageState extends State<HomePage> {
                                     topRight: Radius.circular(35))),
                             child: const Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text(
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Color.fromARGB(255, 69, 104, 180),
-                                      fontFamily: 'Exo2-Regular'),
-                                  "You will hear a single note. \nYour goal is to identify the name of the note.\nType the number of runds, and start!"),
+                              child: FittedBox(
+                                child: Text(
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color:
+                                            Color.fromARGB(255, 69, 104, 180),
+                                        fontFamily: 'Exo2-Regular'),
+                                    "You will hear a single note. \nYour goal is to identify the name of the note.\nType the number of runds, and start!"),
+                              ),
                             ),
                           ),
                           SizedBox(height: 100),
@@ -83,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                             widthFactor: 0.6,
                             child: TextFormField(
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 25),
                               controller: roundsController,
                               cursorColor: Colors.blue,
                               keyboardType: TextInputType.number,
@@ -92,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                 counterText: '',
                                 labelText: 'Rounds:',
                                 labelStyle: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 35,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   fontFamily: 'Exo2-Light',
                                 ),
@@ -112,29 +116,31 @@ class _HomePageState extends State<HomePage> {
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.height * 0.1,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  textStyle: TextStyle(
-                                    fontFamily: 'Exo2-Regular',
+                            child: FittedBox(
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    textStyle: TextStyle(
+                                      fontFamily: 'Exo2-Regular',
+                                    ),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor:
+                                        Color.fromARGB(255, 69, 104, 180),
                                   ),
-                                  backgroundColor: Colors.white,
-                                  foregroundColor:
-                                      Color.fromARGB(255, 69, 104, 180),
-                                ),
-                                onPressed: () {
-                                  FocusScope.of(context).unfocus();
-                                  if (roundsController.text == '') {
-                                  } else {
-                                    Navigator.of(context)
-                                        .push(MaterialPageRoute(
-                                            builder: ((context) => GamePage(
-                                                  score: 0,
-                                                  round: int.parse(
-                                                      roundsController.text),
-                                                ))));
-                                  }
-                                },
-                                child: Text("Play")),
+                                  onPressed: () {
+                                    FocusScope.of(context).unfocus();
+                                    if (roundsController.text == '') {
+                                    } else {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: ((context) => GamePage(
+                                                    score: 0,
+                                                    round: int.parse(
+                                                        roundsController.text),
+                                                  ))));
+                                    }
+                                  },
+                                  child: Text("Start")),
+                            ),
                           ),
                         ],
                       ),

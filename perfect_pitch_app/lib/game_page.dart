@@ -4,6 +4,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:perfect_pitch_app/black_tile.dart';
 import 'package:perfect_pitch_app/notes.dart';
 import 'package:perfect_pitch_app/white_tile.dart';
+import 'package:perfect_pitch_app/home_page.dart';
 
 class GamePage extends StatefulWidget {
   final int score;
@@ -43,24 +44,67 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/GamePageBackground.jpg'),
-                fit: BoxFit.cover)),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(122, 232, 242, 1),
+              Color.fromRGBO(108, 132, 255, 1),
+              Color.fromRGBO(100, 255, 236, 1),
+            ],
+          ),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Timer(const Duration(milliseconds: 0), () async {
-                  await player.stop();
-                  await player.play(AssetSource(source));
-                });
-              },
-              child: Text("Play again"),
+            SafeArea(
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.popUntil(context, (route) => route.isFirst);
+                        },
+                        icon: Icon(Icons.arrow_back_ios_rounded),
+                        color: Colors.white,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Text(
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontFamily: 'Exo2-Regular'),
+                            '${widget.score}/${widget.round}'),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: IconButton(
+                onPressed: () {
+                  Timer(const Duration(milliseconds: 0), () async {
+                    await player.stop();
+                    await player.play(AssetSource(source));
+                  });
+                },
+                icon: Icon(
+                  Icons.music_note_outlined,
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  size: 60,
+                ),
+              ),
             ),
             SizedBox(
-              height: 200,
+              height: 10,
             ),
             SizedBox(
               height: 300,

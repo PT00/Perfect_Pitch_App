@@ -25,10 +25,17 @@ class _EndMenuState extends State<EndMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/GamePageBackground.jpg'),
-        )),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(122, 232, 242, 1),
+              Color.fromRGBO(108, 132, 255, 1),
+              Color.fromRGBO(100, 255, 236, 1),
+            ],
+          ),
+        ),
         child: Center(
           child: GestureDetector(
             onTap: () {
@@ -90,6 +97,14 @@ class _EndMenuState extends State<EndMenu> {
                           ),
                         ),
                         ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              textStyle: TextStyle(
+                                fontFamily: 'Exo2-Regular',
+                              ),
+                              backgroundColor: Colors.white,
+                              foregroundColor:
+                                  Color.fromARGB(255, 69, 104, 180),
+                            ),
                             onPressed: () {
                               Navigator.popUntil(
                                   context, (route) => route.isFirst);
