@@ -13,7 +13,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final roundsController = TextEditingController();
+  bool selected = false;
   int rounds = 0;
+  double selectedWidthActive = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,11 +83,11 @@ class _HomePageState extends State<HomePage> {
                                         color:
                                             Color.fromARGB(255, 69, 104, 180),
                                         fontFamily: 'Exo2-Regular'),
-                                    "You will hear a single note. \nYour goal is to identify the name of the note.\nType the number of runds, and start!"),
+                                    "You will hear a single note. \nYour goal is to identify the name of the note.\nType the number of rounds, and start!"),
                               ),
                             ),
                           ),
-                          SizedBox(height: 100),
+                          SizedBox(height: 150),
                           FractionallySizedBox(
                             widthFactor: 0.6,
                             child: TextFormField(

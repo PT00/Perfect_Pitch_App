@@ -87,13 +87,78 @@ class _EndMenuState extends State<EndMenu> {
                           child: Padding(
                             padding:
                                 const EdgeInsets.only(left: 20.0, bottom: 80),
-                            child: Text(
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontFamily: 'Exo2-Light',
+                            child: Row(
+                              children: [
+                                Text(
+                                    style: const TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontFamily: 'Exo2-Light',
+                                    ),
+                                    "High Score: ${UserSimplePreferences.getHighScore() == null ? "0" : UserSimplePreferences.getHighScore().toString()}"),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20.0, top: 4.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    height: MediaQuery.of(context).size.height *
+                                        0.04,
+                                    width: MediaQuery.of(context).size.height *
+                                        0.04,
+                                    child: FittedBox(
+                                      child: IconButton(
+                                        onPressed: () => showDialog<String>(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            title: const Text('Are you sure ?'),
+                                            content: const Text(
+                                                'Your High Score will be erased.'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    context, 'Cancel'),
+                                                child: const Text(
+                                                  'Cancel',
+                                                  style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        108, 132, 255, 1),
+                                                  ),
+                                                ),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    UserSimplePreferences
+                                                        .setHighScore('0');
+                                                  });
+                                                  Navigator.pop(context, 'OK');
+                                                },
+                                                child: const Icon(
+                                                  Icons.done_all_sharp,
+                                                  color: Color.fromRGBO(
+                                                      108, 132, 255, 1),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        icon: const Icon(
+                                          Icons.close,
+                                          color:
+                                              Color.fromARGB(255, 247, 55, 55),
+                                          size: 35,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                "High Score: ${UserSimplePreferences.getHighScore() == null ? "0" : UserSimplePreferences.getHighScore().toString()}"),
+                              ],
+                            ),
                           ),
                         ),
                         ElevatedButton(
