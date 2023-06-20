@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perfect_pitch_app/game_page.dart';
+import 'package:perfect_pitch_app/user_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -46,14 +47,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(28, 176, 255, 0.733),
-                        borderRadius: BorderRadius.all(Radius.circular(35)),
+                        color: const Color.fromRGBO(118, 177, 255, 0.8),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(35)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            offset: const Offset(
+                                0, 3), // changes position of shadow
                           ),
                         ],
                       ),
@@ -86,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                           FractionallySizedBox(
                             widthFactor: 0.6,
                             child: TextFormField(
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 25),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 25),
                               controller: roundsController,
                               cursorColor: Colors.blue,
                               keyboardType: TextInputType.number,
@@ -119,27 +122,32 @@ class _HomePageState extends State<HomePage> {
                             child: FittedBox(
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                       fontFamily: 'Exo2-Regular',
                                     ),
                                     backgroundColor: Colors.white,
                                     foregroundColor:
-                                        Color.fromARGB(255, 69, 104, 180),
+                                        const Color.fromARGB(255, 69, 104, 180),
                                   ),
                                   onPressed: () {
                                     FocusScope.of(context).unfocus();
                                     if (roundsController.text == '') {
                                     } else {
-                                      Navigator.of(context)
-                                          .push(MaterialPageRoute(
-                                              builder: ((context) => GamePage(
-                                                    score: 0,
-                                                    round: int.parse(
-                                                        roundsController.text),
-                                                  ))));
+                                      UserSimplePreferences.setRounds(
+                                        int.parse(roundsController.text),
+                                      );
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: ((context) => GamePage(
+                                                score: 0,
+                                                round: int.parse(
+                                                    roundsController.text),
+                                              )),
+                                        ),
+                                      );
                                     }
                                   },
-                                  child: Text("Start")),
+                                  child: const Text("Start")),
                             ),
                           ),
                         ],

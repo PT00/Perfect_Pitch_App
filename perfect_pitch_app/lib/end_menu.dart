@@ -59,7 +59,7 @@ class _EndMenuState extends State<EndMenu> {
                     height: 20,
                   ),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 0.3),
                       borderRadius: BorderRadius.all(Radius.circular(35)),
                     ),
@@ -74,7 +74,7 @@ class _EndMenuState extends State<EndMenu> {
                             padding:
                                 const EdgeInsets.only(left: 20.0, bottom: 10),
                             child: Text(
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 25,
                                   color: Colors.white,
                                   fontFamily: 'Exo2-Light',
@@ -88,7 +88,7 @@ class _EndMenuState extends State<EndMenu> {
                             padding:
                                 const EdgeInsets.only(left: 20.0, bottom: 80),
                             child: Text(
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 25,
                                   color: Colors.white,
                                   fontFamily: 'Exo2-Light',

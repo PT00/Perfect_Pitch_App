@@ -4,7 +4,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:perfect_pitch_app/black_tile.dart';
 import 'package:perfect_pitch_app/notes.dart';
 import 'package:perfect_pitch_app/white_tile.dart';
-import 'package:perfect_pitch_app/home_page.dart';
+import 'package:perfect_pitch_app/user_preferences.dart';
 
 class GamePage extends StatefulWidget {
   final int score;
@@ -76,11 +76,11 @@ class _GamePageState extends State<GamePage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 10.0),
                         child: Text(
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
                                 fontFamily: 'Exo2-Regular'),
-                            '${widget.score}/${widget.round}'),
+                            '${widget.score}/${UserSimplePreferences.getRounds()}'),
                       )
                     ],
                   ),
@@ -96,14 +96,14 @@ class _GamePageState extends State<GamePage> {
                     await player.play(AssetSource(source));
                   });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.music_note_outlined,
                   color: Color.fromRGBO(255, 255, 255, 1),
                   size: 60,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
