@@ -50,7 +50,7 @@ class _WhiteTileState extends State<WhiteTile> {
           });
           if (widget.round - 1 == 0) {
             Navigator.of(widget.context).push(
-              CustomPageRoute(
+              MaterialPageRoute(
                 builder: ((context) => EndMenu(
                       score: widget.correctAnswer == widget.index
                           ? widget.score + 1
@@ -86,16 +86,23 @@ class _WhiteTileState extends State<WhiteTile> {
         child: Container(
           decoration: BoxDecoration(
             color: isPressed
-                ? Color.fromARGB(
-                    255, 191, 211, 227) // Darker color when pressed
-                : Color.fromARGB(255, 223, 235, 245),
-            border: Border.all(color: Color.fromARGB(221, 26, 89, 216)),
+                ? const Color.fromARGB(
+                    255, 222, 240, 255) // Darker color when pressed
+                : const Color.fromRGBO(255, 255, 255, 1),
+            border: Border.all(color: const Color.fromARGB(255, 195, 209, 218)),
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 30.0),
-              child: Text(widget.tone),
+              child: Text(
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 69, 147, 210),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                  widget.tone),
             ),
           ),
         ),

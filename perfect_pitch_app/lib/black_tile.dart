@@ -53,7 +53,7 @@ class _BlackTileState extends State<BlackTile> {
           });
           if (widget.round - 1 == 0) {
             Navigator.of(widget.context).push(
-              CustomPageRoute(
+              MaterialPageRoute(
                 builder: ((context) => EndMenu(
                       score: widget.correctAnswer == widget.index
                           ? widget.score + 1
@@ -92,7 +92,9 @@ class _BlackTileState extends State<BlackTile> {
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
-            color: isPressed ? Colors.grey[800] : Colors.black,
+            color: isPressed
+                ? Color.fromRGBO(78, 152, 249, 1)
+                : Color.fromRGBO(118, 177, 255, 1),
           ),
           child: Align(
             alignment: Alignment.bottomCenter,
@@ -100,7 +102,8 @@ class _BlackTileState extends State<BlackTile> {
               padding: const EdgeInsets.only(bottom: 16.0),
               child: Text(
                 widget.tone,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),
