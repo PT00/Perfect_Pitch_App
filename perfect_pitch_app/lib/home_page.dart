@@ -21,9 +21,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/RootBackgroundBlured.jpg'),
-                fit: BoxFit.cover)),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(122, 232, 242, 1),
+              Color.fromRGBO(108, 132, 255, 1),
+              Color.fromRGBO(100, 255, 236, 1),
+            ],
+          ),
+        ),
         child: Center(
           child: GestureDetector(
             onTap: () {
@@ -49,18 +56,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: const Color.fromRGBO(118, 177, 255, 0.8),
+                        color: Color.fromRGBO(255, 255, 255, 0.3),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(35)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: const Offset(
-                                0, 3), // changes position of shadow
-                          ),
-                        ],
                       ),
                       height: MediaQuery.of(context).size.height * 0.7,
                       width: MediaQuery.of(context).size.width * 0.8,

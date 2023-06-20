@@ -29,7 +29,7 @@ class _GamePageState extends State<GamePage> {
     var helper = randomNote();
     index = helper[0];
     source = helper[1];
-    Timer(const Duration(milliseconds: 250), () async {
+    Timer(const Duration(milliseconds: 200), () async {
       await player.play(AssetSource(source));
     });
   }
