@@ -93,8 +93,8 @@ class _BlackTileState extends State<BlackTile> {
               bottomRight: Radius.circular(20),
             ),
             color: isPressed
-                ? Color.fromRGBO(78, 152, 249, 1)
-                : Color.fromRGBO(118, 177, 255, 1),
+                ? Color.fromARGB(255, 27, 74, 115)
+                : Color.fromRGBO(62, 104, 163, 1),
           ),
           child: Align(
             alignment: Alignment.bottomCenter,

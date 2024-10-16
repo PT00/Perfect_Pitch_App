@@ -49,9 +49,9 @@ class _GamePageState extends State<GamePage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromRGBO(122, 232, 242, 1),
-              Color.fromRGBO(108, 132, 255, 1),
-              Color.fromRGBO(100, 255, 236, 1),
+              Color.fromRGBO(119, 172, 241, 1),
+              Color.fromRGBO(62, 104, 163, 1),
+              Color.fromARGB(255, 27, 74, 115)
             ],
           ),
         ),

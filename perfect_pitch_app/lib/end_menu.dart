@@ -30,9 +30,9 @@ class _EndMenuState extends State<EndMenu> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromRGBO(122, 232, 242, 1),
-              Color.fromRGBO(108, 132, 255, 1),
-              Color.fromRGBO(100, 255, 236, 1),
+              Color.fromRGBO(119, 172, 241, 1),
+              Color.fromRGBO(62, 104, 163, 1),
+              Color.fromARGB(255, 27, 74, 115)
             ],
           ),
         ),
@@ -60,8 +60,8 @@ class _EndMenuState extends State<EndMenu> {
                   ),
                   Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 0.3),
-                      borderRadius: BorderRadius.all(Radius.circular(35)),
+                      color: Color.fromRGBO(255, 255, 255, 0.35),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     height: MediaQuery.of(context).size.height * 0.4,
                     width: MediaQuery.of(context).size.width * 0.8,

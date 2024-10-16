@@ -25,9 +25,9 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromRGBO(122, 232, 242, 1),
-              Color.fromRGBO(108, 132, 255, 1),
-              Color.fromRGBO(100, 255, 236, 1),
+              Color.fromRGBO(119, 172, 241, 1),
+              Color.fromRGBO(62, 104, 163, 1),
+              Color.fromARGB(255, 27, 74, 115)
             ],
           ),
         ),
@@ -56,9 +56,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 0.3),
+                        color: Color.fromRGBO(255, 255, 255, 0.35),
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(35)),
+                            const BorderRadius.all(Radius.circular(20)),
                       ),
                       height: MediaQuery.of(context).size.height * 0.7,
                       width: MediaQuery.of(context).size.width * 0.8,
@@ -68,10 +68,10 @@ class _HomePageState extends State<HomePage> {
                           Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                             decoration: const BoxDecoration(
-                                color: Color.fromRGBO(255, 255, 255, 1),
+                                color: Color.fromRGBO(255, 255, 255, 0.75),
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(35),
-                                    topRight: Radius.circular(35))),
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20))),
                             child: const Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: FittedBox(
@@ -131,7 +131,10 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   onPressed: () {
                                     FocusScope.of(context).unfocus();
-                                    if (roundsController.text == '') {
+                                    if (roundsController.text == '' ||
+                                        int.parse(roundsController.text) <= 0 ||
+                                        int.parse(roundsController.text)
+                                            is double) {
                                     } else {
                                       UserSimplePreferences.setRounds(
                                         int.parse(roundsController.text),
